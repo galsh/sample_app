@@ -8,10 +8,14 @@ describe "Static Pages" do
 
 			visit '/static_pages/home'
 			page.should have_selector('h1', :text => 'Sample App')
-
-			page.should have_selector('title', 
-				:text => "Ruby on Rails Tutorial Sample App | Home")
 		end
+		it "should have the base title" do
+
+			visit '/static_pages/home'
+			page.should have_selector('title', 
+				:text => "Ruby on Rails Tutorial Sample App")
+		end
+		
 	end
 
 	describe "Help Page" do
