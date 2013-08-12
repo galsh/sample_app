@@ -1,6 +1,11 @@
 SampleApp::Application.routes.draw do
   root :to => 'static_pages#home'
 
+# when you match '/signup' to a url it allows you 
+#to use the visit signup_path in the test screen and when
+# defining links
+  match '/signup', to: "users#new"
+
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
