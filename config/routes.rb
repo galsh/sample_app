@@ -1,4 +1,8 @@
 SampleApp::Application.routes.draw do
+#REST routes for users - sets up the routes for us by using this line
+resources :users
+
+
   root :to => 'static_pages#home'
 
 # when you match '/signup' to a url it allows you 

@@ -2,6 +2,10 @@
 
 $lightGray: #999;
 
+@mixin box_sizing {
+	-moz-box-sizing: border-box;
+}
+
 /* universal */
 
 html{
@@ -96,7 +100,15 @@ footer {
 	}
 }
 
+/* misc */
 
+.debug_dump{
+	clear: both;
+	float: left;
+	width: 100%;
+	margin-top: 45px;
+	@include box_sizing;
+}
 
 
 
