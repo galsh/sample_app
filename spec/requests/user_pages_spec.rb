@@ -31,23 +31,39 @@ describe "UserPages" do
 
 	describe "signup" do
 		before { visit signup_path }
+		let(:submit) { "Create my account" }
 		
 
 		describe "with invalid information" do
 			it "should  not create a user" do
-				old_count = User.count
-				click_button "Create my account"
-				new_count = User.count
-				new_count.should == old_count
-
-
-
+				expect { click_button submit }.not_to change(User, :count)
+	
 			end
 		end
 
 		describe  "with valid information" do
-			it "should create a user" do
+
+			before do
+				fill_in "Name", 		with: "Example User"
+				fill_in "Email", 		with: "user@example.com"
+				fill_in "Password", 	with: "password"
+				fill_in "Confirmation", with: "password"
 			end
+			
+			it "should create a user" do
+			
+			expect { click_button submit }.to change(User, :count).by(1)
+			end
+
+		describe "after saving a user" do
+
+			before { click_button submit }
+
+			let(:user) { User.find_by_email("user@example.com") }
+
+			it { should have_selector('title', text: user.name) }
+		end
+
 		end
 	end
 end
