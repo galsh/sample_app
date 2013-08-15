@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # attributes that are editable
-  attr_accessible :email, :name, :password, :password_confirmation, :remember_token
+  attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
   before_save { |user| user.email = user.email.downcase }
