@@ -1,7 +1,7 @@
 require 'spec_helper'
 #for tests to run sucessfully you need to clone the development database structure to a test database
 # bundle exec rake db:test:prepare
-describe User do
+describe "User" do
 
 	before do
     @user = User.new(name: "Example User", email: "user@example.com", 
