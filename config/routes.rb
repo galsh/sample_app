@@ -1,6 +1,7 @@
 SampleApp::Application.routes.draw do
 #REST routes for users - sets up the routes for us by using this line
 resources :users
+resources :sessions, only: [:new, :create, :destroy]
 
 
   root :to => 'static_pages#home'
@@ -9,6 +10,9 @@ resources :users
 #to use the visit signup_path in the test screen and when
 # defining links
   match '/signup', to: "users#new"
+
+  match '/signin', to: "sessions#new"
+  match '/signout', to: "sessions#destroy"
 
   match '/help', to: 'static_pages#help'
   match '/about', to: 'static_pages#about'
