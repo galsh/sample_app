@@ -8,7 +8,6 @@ FactoryGirl.define do
 		email "galsh@example.com"
 		password "password"
 		password_confirmation "password" 
-	
 	end
 end
 
