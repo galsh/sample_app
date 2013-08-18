@@ -15,7 +15,7 @@ describe "User" do
   it { should respond_to (:password_digest) }
   it { should respond_to (:password) }
   it { should respond_to (:password_confirmation) }
-   it { should respond_to (:remember_token) }
+  it { should respond_to (:remember_token) }
   it { should respond_to(:authenticate) }
   # calls User.valid?
   it { should be_valid }
@@ -102,9 +102,7 @@ describe "User" do
 
    describe "remember token" do
     before { @user.save }
-    it "should have a nonblank remember token" do
-      subject.remember_token.should_not be_blank
-    end
+    its(:remember_token) { should_not be_blank } 
    end
 end
 
