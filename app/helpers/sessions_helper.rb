@@ -21,6 +21,11 @@ module SessionsHelper
 	def current_user
 		# the same as x = x + 1, x = x || 1
 		@current_user ||= User.find_by_remember_token(cookies[:remember_token])
+		
+	end
+
+	def current_user?(user)
+		user == current_user
 	end
 
 	def sign_out
