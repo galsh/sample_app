@@ -12,9 +12,12 @@ it is Users in this case-->
  <li>
  	<%= gravatar_for user, size: 52 %>
  	<%= link_to user.name, user %>
- </li>
-
+ 	<% if current_user.admin? && !current_user?(user) %>
+ 	 | <%= link_to "delete", user, method: :delete, confirm: "Are you sure?"%>
+ 	<% end %>
  <% end %>
+ </li>
+ 	
 </ul>
 
 <%= will_paginate %>
