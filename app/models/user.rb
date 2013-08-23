@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   # attributes that are editable
+  # admin should not appear here so that a user cant post admin = true
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
