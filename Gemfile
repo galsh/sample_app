@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
-gem 'bootstrap-sass', '2.1'
-# gem "anjlab-bootstrap-rails", '3.0.0.1'
-# gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-#                               :github => 'anjlab/bootstrap-rails'
+gem 'bootstrap-sass', '2.3.2.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
@@ -13,8 +10,11 @@ gem 'jquery-rails', '2.0.2'
 ###########
 gem "rails-erd", '1.1.0'
 gem "ruby-graphviz", "1.0.4"
+# gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+#                               :github => 'anjlab/bootstrap-rails',
+#                               :branch => '3.0.0'
 
-
+# gem 'bootstrap-sass-rails', "3.0.0.2"
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
