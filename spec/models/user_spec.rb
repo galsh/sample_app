@@ -18,6 +18,7 @@ describe "User" do
   it { should respond_to (:remember_token) }
   it { should respond_to (:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:microposts) }
   # calls User.valid?
   it { should be_valid }
   it{ should_not be_admin }
@@ -111,6 +112,29 @@ describe "return value of authenicate method" do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank } 
+  end
+
+  describe "Mircopost association" do
+    before { @user.save }
+    let!(:newer_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.hour.ago)
+    end
+    let!(:older_micropost) do
+      FactoryGirl.create(:micropost, user: @user, created_at: 1.day.ago)
+    end
+
+    it "Should have the right posts in the right order" do
+      @user.microposts.should == [newer_micropost, older_micropost]
+    end
+
+    it "should destroy associated posts" do
+      microposts = @user.microposts
+      @user.destroy
+
+      microposts.each do |micropost|
+        Micropost.find_by_id(micropost.id).should be_nil 
+      end
+    end
   end
 end
 
