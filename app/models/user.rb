@@ -2,8 +2,9 @@ class User < ActiveRecord::Base
   # attributes that are editable
   # admin should not appear here so that a user cant post admin = true
   attr_accessible :email, :name, :password, :password_confirmation
-  has_secure_password
   has_many :microposts, dependent: :destroy
+
+  has_secure_password
 
   before_save { |user| user.email = user.email.downcase }
   before_save :create_remember_token
